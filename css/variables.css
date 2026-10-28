@@ -1,0 +1,94 @@
+/* ==========================================================================
+   GRVED Digital — design tokens (single source of truth)
+   Verification key:
+   [V-logo]  sampled from the supplied logo PNG (pixel means; ±3 per channel possible)
+   [chosen]  neutral/utility value chosen for this build, NOT taken from the live site
+   Breakpoints (CSS vars cannot be used in @media): 480 · 768 · 1024 · 1280 px
+   ========================================================================== */
+:root {
+  /* ---- Brand palette [V-logo] ---- */
+  --brand-pink: #e65c8c;
+  --brand-magenta: #e24ba0;
+  --brand-purple: #8d3ac6;
+  --brand-indigo: #4c54ec;
+  --brand-blue: #3890f4;
+  --brand-cyan: #1abbe9;
+  --brand-teal: #13cfde;
+
+  /* Logo gradient, left to right */
+  --grad-brand: linear-gradient(
+    90deg,
+    var(--brand-pink),
+    var(--brand-magenta) 14%,
+    var(--brand-purple) 30%,
+    var(--brand-indigo) 48%,
+    var(--brand-blue) 62%,
+    var(--brand-cyan) 80%,
+    var(--brand-teal)
+  );
+  /* Text/button gradients use only the stops that keep white-text / large-text contrast >= 3:1 */
+  --grad-action: linear-gradient(135deg, var(--brand-purple), var(--brand-indigo));
+  --grad-text: linear-gradient(90deg, var(--brand-magenta), var(--brand-purple) 45%, var(--brand-indigo));
+
+  /* ---- Semantic roles (map to brand) ---- */
+  --color-primary: var(--brand-indigo);
+  --color-secondary: var(--brand-purple);
+  --color-accent: var(--brand-cyan);
+
+  /* ---- Derived [chosen] ---- */
+  --grad-action-hover: linear-gradient(135deg, #7d2fb5, #3f47d6); /* ~10% darker than the action stops */
+  --tint-indigo: rgb(76 84 236 / 0.08);
+
+  /* ---- Neutrals [chosen] ---- */
+  --bg: #ffffff;
+  --surface: #f5f6fb;
+  --ink-900: #0e1126;
+  --ink-700: #2b2f4a;
+  --ink-500: #5b6080;
+  --line: #e3e5f0;
+  --on-dark: #e8eaf6;
+  --on-dark-muted: #aab0cf;
+
+  /* ---- Feedback [chosen] ---- */
+  --error: #b3261e;
+  --success: #0b7a4b;
+
+  /* ---- Typography ---- */
+  /* Original site font is unverified; system stack = zero requests. Swap here when the real font is supplied. */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-lg: clamp(1.15rem, 1.05rem + 0.4vw, 1.3rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-h2: clamp(1.75rem, 1.3rem + 1.8vw, 2.6rem);
+  --fs-h1: clamp(2.25rem, 1.5rem + 3.4vw, 4rem);
+  --lh-tight: 1.15;
+  --lh-body: 1.65;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 5rem;
+  --section-y: clamp(3.5rem, 7vw, 6rem);
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --container: 75rem;
+  --header-h: 4.5rem;
+
+  /* ---- Shape & depth ---- */
+  --radius-sm: 0.5rem;
+  --radius: 1rem;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgb(14 17 38 / 0.06), 0 2px 8px rgb(14 17 38 / 0.05);
+  --shadow-md: 0 8px 28px rgb(14 17 38 / 0.1);
+  --shadow-brand: 0 8px 24px rgb(76 84 236 / 0.28);
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 0.25s;
+}

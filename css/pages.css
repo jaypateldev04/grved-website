@@ -1,0 +1,147 @@
+/* Page-specific layout. Shared components live in components.css. */
+
+/* ---------- Home hero ---------- */
+.hero-grid { display: grid; gap: var(--space-8); align-items: center; }
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
+}
+
+.hero-visual {
+  position: relative;
+  width: min(100%, 26rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 2rem;
+  background:
+    radial-gradient(60% 60% at 25% 25%, rgb(226 75 160 / 0.9), transparent 70%),
+    radial-gradient(60% 60% at 80% 75%, rgb(26 187 233 / 0.9), transparent 70%),
+    radial-gradient(50% 50% at 70% 20%, rgb(141 58 198 / 0.8), transparent 70%),
+    var(--ink-900);
+  box-shadow: var(--shadow-md);
+}
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 14%;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: 50%;
+}
+.hero-pill {
+  position: absolute;
+  z-index: 1;
+  padding: 0.55rem 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  background: rgb(255 255 255 / 0.16);
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+  animation: float 6s ease-in-out infinite;
+}
+.hero-pill:nth-child(1) { top: 14%; left: 10%; }
+.hero-pill:nth-child(2) { top: 40%; right: 8%; animation-delay: -2s; }
+.hero-pill:nth-child(3) { bottom: 22%; left: 14%; animation-delay: -4s; }
+.hero-pill:nth-child(4) { bottom: 8%; right: 18%; animation-delay: -1s; }
+@keyframes float {
+  50% { transform: translateY(-10px); }
+}
+
+.hero h1 .text-grad { display: inline-block; } /* keep "Get Discovered by AI." together on one line when it fits */
+
+/* ---------- Generic helpers ---------- */
+.split { display: grid; gap: var(--space-8); }
+@media (min-width: 900px) {
+  .split { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+.mission {
+  margin-top: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  color: var(--ink-900);
+  background: var(--tint-indigo);
+  border-left: 4px solid var(--brand-indigo);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.feature-list { display: grid; gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+.feature-list li { display: grid; grid-template-columns: auto 1fr; gap: var(--space-4); padding: var(--space-5); background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.feature-list h3 { margin-bottom: var(--space-1); font-size: var(--fs-lg); }
+.feature-list p { margin: 0; color: var(--ink-500); }
+.feature-num {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--grad-action);
+  border-radius: 50%;
+}
+
+.stat-value--text { font-size: var(--fs-h3); line-height: 1.2; }
+
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.chip {
+  padding: 0.55rem 1.1rem;
+  font-weight: 700;
+  color: var(--ink-900);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+}
+
+/* ---------- Project cards ---------- */
+.project-tile {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  margin-bottom: var(--space-4);
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  border-radius: var(--radius-sm);
+}
+.project-tile--1 { background: linear-gradient(135deg, var(--brand-pink), var(--brand-purple)); }
+.project-tile--2 { background: linear-gradient(135deg, var(--brand-purple), var(--brand-indigo)); }
+.project-tile--3 { background: linear-gradient(135deg, var(--brand-indigo), var(--brand-blue)); }
+.project-tile--4 { background: linear-gradient(135deg, var(--brand-magenta), var(--brand-indigo)); }
+.card .badge { align-self: flex-start; margin-bottom: var(--space-3); }
+
+/* ---------- Contact section ---------- */
+.contact-grid { display: grid; gap: var(--space-8); align-items: start; }
+@media (min-width: 900px) {
+  .contact-grid { grid-template-columns: 0.9fr 1.1fr; }
+}
+.quick-contacts { display: grid; gap: var(--space-3); margin: var(--space-6) 0 0; padding: 0; list-style: none; }
+.quick-contacts a { color: var(--on-dark); font-weight: 700; }
+.quick-contacts a:hover { color: var(--brand-cyan); }
+.form-card { padding: var(--space-6); color: var(--ink-700); background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-md); }
+
+/* ---------- Project pages ---------- */
+.narrow { max-width: 52rem; }
+.project-tile { border-radius: var(--radius-lg, 16px); }
+.page-project .split > .project-tile { margin-bottom: 0; min-height: 14rem; }
+.detail-list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-3); }
+.detail-list li { display: grid; gap: 2px; padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); }
+.detail-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.detail-list strong { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-500); }
+.page-project .detail-list ~ *, .page-project .card > h2 { font-size: var(--text-xl, 1.25rem); }
+
+/* Project case-study pages */
+.page-project .project-figure { margin: 0; }
+.page-project .project-figure img,
+.page-project .img-missing { width: 100%; height: auto; border-radius: var(--radius-lg, 16px); display: block; }
+.img-missing { aspect-ratio: 16 / 9; background: linear-gradient(135deg, var(--brand-pink), var(--brand-purple) 50%, var(--brand-blue)); opacity: .9; }
+.project-figures { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+.page-project .narrow h3 { margin-top: var(--space-6); }
+
+/* Blog listing */
+.post-card { position: relative; padding: 0; overflow: hidden; }
+.post-card-img, .post-card .img-missing { width: 100%; aspect-ratio: 16 / 9; height: auto; object-fit: cover; display: block; border-radius: 0; }
+.post-card h2 { padding: var(--space-4) var(--space-5) 0; margin: 0; }
+.post-card .post-meta { padding: var(--space-2) var(--space-5) var(--space-5); margin: 0; color: var(--ink-500); font-size: .875rem; }
+.card-link-title { color: inherit; text-decoration: none; }
+.card-link-title::before { content: ""; position: absolute; inset: 0; }
+.card-link-title:hover, .card-link-title:focus-visible { text-decoration: underline; }
